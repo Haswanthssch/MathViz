@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronRight, Calculator as CalculatorIcon, Box, Activity, Shapes, Binary, LineChart, Compass } from 'lucide-react';
+import { Menu, X, Calculator as CalculatorIcon, Box, Activity, Shapes, LineChart, Compass } from 'lucide-react';
+
 import Landing from './components/Landing';
 import Graph2D from './components/Graph2D';
 import Graph3D from './components/Graph3D';
 import Calculator from './components/Calculator';
-import NumberTheory from './components/NumberTheory';
 import Statistics from './components/Statistics';
 import Geometry from './components/Geometry';
 
@@ -36,13 +36,6 @@ const Navigation = () => {
       description: 'Advanced calculator with support for complex mathematical operations'
     },
     {
-      title: 'Number Theory',
-      icon: <Binary className="w-6 h-6 text-primary-600" />,
-      view: 'numberTheory',
-      path: '/number-theory',
-      description: 'Explore prime numbers, factorization, and number properties'
-    },
-    {
       title: 'Statistical Analysis',
       icon: <LineChart className="w-6 h-6 text-primary-600" />,
       view: 'statistics',
@@ -59,7 +52,9 @@ const Navigation = () => {
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="shadow-sm sticky top-0 z-50" style={{
+      backgroundImage: 'linear-gradient(135deg, #e0f2fe 0%, #f5d0fe 45%, #fde68a 100%)'
+    }}>
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
@@ -128,18 +123,22 @@ const Navigation = () => {
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen" style={{
+      backgroundImage: 'linear-gradient(120deg, #e0f2fe 0%, #f5d0fe 50%, #fde68a 100%)'
+    }}>
       <Navigation />
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl">
           {children}
         </div>
       </main>
-      <footer className="bg-white mt-auto">
+      <footer className="mt-auto" style={{
+        backgroundImage: 'linear-gradient(135deg, #e0f2fe 0%, #f5d0fe 45%, #fde68a 100%)'
+      }}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <p className="text-sm text-gray-500">
-              © 2025 MathVerse. All rights reserved. Advanced Mathematics Calculator Platform.
+              2025 MathVerse. All rights reserved. Advanced Mathematics Calculator Platform.
             </p>
           </div>
         </div>
@@ -156,7 +155,6 @@ function App() {
         <Route path="/2d" element={<Layout><Graph2D /></Layout>} />
         <Route path="/3d" element={<Layout><Graph3D /></Layout>} />
         <Route path="/calculator" element={<Layout><Calculator /></Layout>} />
-        <Route path="/number-theory" element={<Layout><NumberTheory /></Layout>} />
         <Route path="/statistics" element={<Layout><Statistics /></Layout>} />
         <Route path="/geometry" element={<Layout><Geometry /></Layout>} />
       </Routes>
